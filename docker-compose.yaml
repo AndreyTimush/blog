@@ -7,3 +7,25 @@ services:
       - 8000:80
     volumes:
       - ./:/var/www/blog
+
+  mysql:
+    image: mysql
+    ports:
+      - 3316:3306
+    env_file:
+      - ./docker/mysql/mysql.env
+
+  composer:
+    build:
+      context: docker/composer
+      dockerfile: composer.Dockerfile
+    volumes:
+      - ./:/var/www/blog
+
+  artisan:
+    build:
+      context: docker/php
+      dockerfile: php.Dockerfile
+    volumes:
+      - ./:/var/www/blog
+    entrypoint: [ "php", "/var/www/blog/artisan" ]
