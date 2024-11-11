@@ -1,0 +1,9 @@
+services:
+  apache:
+    build:
+      context: docker/php
+      dockerfile: php.Dockerfile
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www/blog
