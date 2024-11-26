@@ -23,4 +23,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN chown -R www-data:www-data /var/www/blog
 
+COPY ./.bashrc /var/www/.bashrc
+
+USER www-data
+
 EXPOSE 80

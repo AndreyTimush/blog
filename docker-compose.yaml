@@ -23,18 +23,17 @@ services:
       - PMA_HOST=mysql
     depends_on:
       - mysql
+  # composer:
+  #   build:
+  #     context: docker/composer
+  #     dockerfile: composer.Dockerfile
+  #   volumes:
+  #     - ./:/var/www/blog
 
-  composer:
-    build:
-      context: docker/composer
-      dockerfile: composer.Dockerfile
-    volumes:
-      - ./:/var/www/blog
-
-  artisan:
-    build:
-      context: docker/php
-      dockerfile: php.Dockerfile
-    volumes:
-      - ./:/var/www/blog
-    entrypoint: [ "php", "/var/www/blog/artisan" ]
+  # artisan:
+  #   build:q 
+  #     context: docker/php
+  #     dockerfile: php.Dockerfile
+  #   volumes:
+  #     - ./:/var/www/blog
+  #   entrypoint: [ "php", "/var/www/blog/artisan" ]
